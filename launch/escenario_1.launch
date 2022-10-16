@@ -1,0 +1,3 @@
+<launch>
+<node name="generar_carga_util" pkg="gazebo_ros" type="spawn_model" args="-f $(find ccoss_2022)/.gazebo/caja/caja.sdf -m carga_util"/>
+</launch>
