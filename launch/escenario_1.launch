@@ -1,3 +1,5 @@
+<?xml version="1.0"?>
 <launch>
-<node name="generar_carga_util" pkg="gazebo_ros" type="spawn_model" args="-file $(find ccoss_2022)/.gazebo/models/caja/caja.sdf -sdf -m carga_util"/>
+<include file="$(find ccoss_2022)/launch/carga_util.launch"/>
+<include file="$(find ccoss_2022)/launch/init_world.launch"/>
 </launch>

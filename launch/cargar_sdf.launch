@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+    <arg name="model_file" default="$(find ccoss_2022)/ccoss_gazebo/models/caja/caja.sdf"/>
+    <arg name="model_name" default="carga_util"/>
+
+    <node name="$(arg model_name)_spawn_sdf" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-file $(arg model_file) -sdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model $(arg model_name)"/>
+</launch>

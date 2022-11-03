@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+    <arg name="model_file" default="$(find ccoss_2022)/ccoss_gazebo/models/caja/caja.sdf"/>
+    <arg name="model_name" default="carga_util"/>
+
+    <include file="$(find ccoss_2022)/launch/cargar_sdf.launch">
+        <arg name="model_file" value="$(arg model_file)"/>
+        <arg name="model_name" value="$(arg model_name)"/>
+    </include>
+</launch>
