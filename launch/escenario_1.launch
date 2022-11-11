@@ -5,9 +5,5 @@
         <arg name="x" value="0.50"/>
         <arg name="y" value="0.50"/>
     </include>
-    <!--<include file="$(find ccoss_2022)/launch/vacuum_gripper.launch">
-        <arg name="x" value="0.25"/>
-        <arg name="y" value="0.25"/>
-    </include>-->
     <node name="test_offboard" pkg="ccoss_2022" type="test_offboard.py" output="screen"/>
 </launch>
