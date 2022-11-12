@@ -12,10 +12,16 @@ from gazebo_msgs.srv import SetModelState,GetModelState
 # Hacemos una variable donde si es verdadero, debe sujetar al paquete
 sujetar = False
 
-# Establecer el callback para la deteccion del drone
+
+# Callback para cambiar si debe ser sujetado
 def sujetar_paquete_cb(msg):
     global sujetar
     sujetar = msg.data
+
+# Callback para obtener los datos del drone
+def get_data_drone_cb(msg):
+    global drone_estado
+    print(drone)
 
 
 def main():
@@ -28,6 +34,8 @@ def main():
     # Creamos la suscripcion del drone para que se sujete
     rospy.Subscriber("/solo/sujetar", Bool)
 
+    # Aquí empezamos a crear el código del sujetador
+
     # Creamos la pose para el paquete
     caja_estado = ModelState()
     caja_estado = drone_estado
@@ -35,20 +43,6 @@ def main():
     caja_estado.pose.position.y = drone_estado.pose.position.y
     caja_estado.pose.position.z = drone_estado.pose.position.z - 0.05
 
-    # Esperamos por el servicio de gazebo para obtener el estado de los modelos
-    rospy.wait_for_service("/gazebo/get_model_state")
-    get_estado_drone = rospy.ServiceProxy("/gazebo/get_model_state", GetModelState)
-
-    # Esperamos por el servicio de gazebo para establecer el estado de los modelos
-    rospy.wait_for_service("/gazebo/set_model_state")
-    set_estado_caja = rospy.ServiceProxy("/gazebo/set_model_state", SetModelState)
-
-    try:
-        res_get = get_estado_drone(drone_estado)
-        res_set = set_estado_caja(caja_estado)
-
-    except (rospy.ServiceException) as e:
-        print("Service call failed: %s" % e)
 
 
 if __name__ == '__main__':
