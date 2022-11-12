@@ -48,9 +48,9 @@ if __name__ == '__main__':
     # Creamos una pose para que se mantenga a dos metros sobre el suelo
     pose = PoseStamped()
 
-    pose.pose.position.x = 0
-    pose.pose.position.y = 0
-    pose.pose.position.z = 2
+    pose.pose.position.x = 0.5
+    pose.pose.position.y = 0.5
+    pose.pose.position.z = 0.7
 
     # Mandamos varios puntos objetivo, para que el controlador respete el modo de vuelo
     for i in range(100):
